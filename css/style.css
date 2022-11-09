@@ -1,0 +1,60 @@
+/* global reset */
+*, *::after, *::before{
+    box-sizing:border-box;
+    margin:0;
+    padding: 0;
+}
+
+/* global styling */
+body{
+    background: rgb(136, 203, 171);
+    background: linear-gradient(0deg, rgba(136, 203, 171, 1) 0%, rgba(0, 13, 60, 1) 100%);
+    color: #fff;
+    font-family: 'Merriweather', serif;
+}
+
+/* style main nav for small screens */
+.main__nav_list a{
+    display: inline-block;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+}
+.container{
+    padding: 1rem 2rem;
+}
+.main__header{
+    background: #fff;
+}
+.main__nav_list{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-evenly;
+}
+
+/* style the main page header for small screens */
+.main__title{
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 1.3em;
+    margin: 3em 0;
+}
+
+/* style sections headings and content for small screens */
+.section__title{
+    font-family: "Oxygen" , sans-serif;
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #cc1;
+}
+.section__content{
+    line-height: 150%;
+}
+
+/* style the footer */
+.main__footer{
+    background: #000;
+    padding: 2rem;
+    line-height: 1.6em;
+}
