@@ -26,11 +26,13 @@
     <!-- create the main body of the page -->
     <main>
         <!-- create the main page's header -->
-        <header class="main__title">
+        <header  class="main__title">
             <div class="container row">
                 <h1 class="title">Landing Page</h1>
             </div>
         </header>
+        <!-- create back to top button -->
+        <button onclick="toTop()" id = "btn" title = "Go to top" class="btn__top">&DoubleUpArrow;</button>
         <!-- create the first section -->
         <section id="section1" class="first section">
             <div class="container row">
@@ -94,6 +96,6 @@
         </div>
     </footer>
     <!-- link the JavaScript file -->
-    <script src="js/app.js"></script>
+    <script defer src="js/app.js"></script>
 </body>
 </html>

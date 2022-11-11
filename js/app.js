@@ -94,5 +94,22 @@ for(let i =0; i< sectionHeaders.length; i++){
             sectionContent.style.maxHeight = sectionContent.scrollHeight + "px";
         }
     });
+    console.log(sectionContent.scrollHeight);
+}
+
+//back to top button code
+let topBtn = document.getElementById("btn");
+window.onscroll = function(){scroll()};
+function scroll(){
+    if(document.body.scrollTop >= 400 || document.documentElement.scrollTop >=400){
+        topBtn.style.display = "block";
+    }
+    else{
+        topBtn.style.display = "none";
+    }
+}
+function toTop(){
+    document.body.scrollTop =0;
+    document.documentElement.scrollTop = 0;
 }
 
