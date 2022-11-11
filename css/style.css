@@ -16,6 +16,19 @@ body{
     color: #fff;
     font-family: 'Merriweather', serif;
     position: relative;
+    
+}
+/*Disable scrollbar Firefox */
+@-moz-document url-prefix() {
+    .scroll_bar{
+        scrollbar-width: none;
+    }
+}
+/* Disable scrollbar Chrome */
+.scroll_bar::-webkit-scrollbar{
+    display:none;
+    /* Disable scrollbar IE and Edge*/
+    scrollbar-width: none;
 }
 .container{
     padding: 1rem 2rem;
