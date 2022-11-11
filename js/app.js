@@ -10,6 +10,9 @@ const sectionsArry = Array.from(sections);
 //declration of the list item array
 let listItems = [];
 
+//declare a tree fragment to avoid reflow and repaint.
+let frag = document.createDocumentFragment();
+
 //iterate over the sections array to get add navigation items according to 
 //the number of sections.
 for(let i = 0; i< sectionsArry.length; i++){
@@ -17,7 +20,8 @@ for(let i = 0; i< sectionsArry.length; i++){
     listItems.push(Item);
     listItems[i].classList.add("nav__item");
     listItems[i].innerHTML = `<a>Section ${i+1}</a>`
-    mainNav.appendChild(listItems[i]);
+    frag.appendChild(listItems[i]);
+    mainNav.appendChild(frag);
 }
 
 //add an eventlistener for each navigation button and navigate to its section.
@@ -31,25 +35,27 @@ for(let i =0; i <listItems.length; i++){
 //function to check if the section is in the view port and highlight it
 function checkSelectedSection(){
     let bounding;
-    document.addEventListener("scroll", function(){
-
+    let containers = document.querySelectorAll(".container");
+    document.addEventListener("scroll", function(){     
+        let elementWidth;
+        let elementHeight;
         
-        for(let i = 0; i<sectionsArry.length; i++){
+        for(let section of sectionsArry){
             
-            bounding = sectionsArry[i].getBoundingClientRect();
-            
-            if (checkSectionPositon(bounding)) {
-                
-                sectionsArry[i].style.background = "linear-gradient(0deg, rgba(51, 204, 51, 0.5) 0%, rgba(0, 0, 0, 0) 100%)";
+            bounding = section.getBoundingClientRect();
+            elementWidth = section.offsetWidth;
+            elementHeight = section.offsetHeight;
+            if (checkSectionPositon(bounding, elementHeight, elementWidth)) {
+                section.style.background = "linear-gradient(0deg, rgba(51, 204, 51, 0.5) 0%, rgba(0, 0, 0, 0) 100%)";
             }
             else {
-                sectionsArry[i].style.background = "none"
+                section.style.background = "none"
             }
         }
     });
 }
 // if statement conditon refactor to detect the section boundries.
-function checkSectionPositon(boundries){
-    return boundries.top >= 0 && boundries.left >=0 && boundries.right <= (window.innerWidth || document.documentElement.clientWidth) && boundries.bottom <= (window.innerHeight || document.documentElement.clientHeight);
+function checkSectionPositon(boundries, elHeight, elWidth){
+    return boundries.top >= -elHeight +500 && boundries.left >= -elWidth && boundries.right <= window.innerWidth + elWidth && boundries.bottom <= window.innerHeight + elHeight -500;
 }
 checkSelectedSection();
