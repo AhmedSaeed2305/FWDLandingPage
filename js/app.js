@@ -80,3 +80,19 @@ document.addEventListener("scroll", function(){
 });
 startTimer();
 
+// collapsable elements code
+const sectionHeaders = document.querySelectorAll(".section__title");
+for(let i =0; i< sectionHeaders.length; i++){
+    let sectionContent = sectionHeaders[i].nextElementSibling;
+    sectionContent.style.maxHeight = sectionContent.scrollHeight + "px";
+    sectionHeaders[i].addEventListener("click", function(){
+        sectionHeaders[i].classList.toggle("toggle");
+        if (sectionContent.style.maxHeight){
+            sectionContent.style.maxHeight = null;
+        } 
+        else {
+            sectionContent.style.maxHeight = sectionContent.scrollHeight + "px";
+        }
+    });
+}
+
