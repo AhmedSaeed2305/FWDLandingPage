@@ -60,3 +60,23 @@ function checkSectionPositon(boundries, elHeight, elWidth){
     return boundries.top >= -elHeight +500 && boundries.left >= -elWidth && boundries.right <= window.innerWidth + elWidth && boundries.bottom <= window.innerHeight + elHeight -500;
 }
 checkSelectedSection();
+
+//function to control the visibality of the scrollbar
+const bodyEl = document.querySelector("body");
+const htmlEl = document.querySelector("html");
+let timer;
+function startTimer(){
+    timer = window.setTimeout(function(){
+        bodyEl.classList.add("scroll_bar");
+        htmlEl.classList.add("scroll_bar");
+    },2000);
+}
+
+document.addEventListener("scroll", function(){
+    bodyEl.classList.remove("scroll_bar");
+    htmlEl.classList.remove("scroll_bar");
+    clearTimeout(timer);
+    startTimer();
+});
+startTimer();
+
