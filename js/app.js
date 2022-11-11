@@ -35,7 +35,6 @@ for(let i =0; i <listItems.length; i++){
 //function to check if the section is in the view port and highlight it
 function checkSelectedSection(){
     let bounding;
-    let containers = document.querySelectorAll(".container");
     document.addEventListener("scroll", function(){     
         let elementWidth;
         let elementHeight;
@@ -47,9 +46,11 @@ function checkSelectedSection(){
             elementHeight = section.offsetHeight;
             if (checkSectionPositon(bounding, elementHeight, elementWidth)) {
                 section.style.background = "linear-gradient(0deg, rgba(51, 204, 51, 0.5) 0%, rgba(0, 0, 0, 0) 100%)";
+                section.classList.add("active");
             }
             else {
                 section.style.background = "none"
+                section.classList.remove("active");
             }
         }
     });
