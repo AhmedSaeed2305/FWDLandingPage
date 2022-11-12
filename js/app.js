@@ -24,7 +24,7 @@ for(let i = 0; i< sectionsArry.length; i++){
     mainNav.appendChild(frag);
 }
 
-//add an eventlistener for each navigation button and navigate to its section.
+//add an eventlistener for each navigation button to navigate to its section.
 for(let i =0; i <listItems.length; i++){
     listItems[i].addEventListener("click", function(){
         location.href= `#section${i+1}`;
@@ -33,7 +33,7 @@ for(let i =0; i <listItems.length; i++){
 }
 
 //function to check if the section is in the view port and highlight it
-function checkSelectedSection(){
+function highlightSelectedSection(){
     let bounding;
     document.addEventListener("scroll", function(){     
         let elementWidth;
@@ -55,13 +55,13 @@ function checkSelectedSection(){
         }
     });
 }
-// if statement conditon refactor to detect the section boundries.
+// if statement conditon refactor to detect the section boundries and compare it with the viewport.
 function checkSectionPositon(boundries, elHeight, elWidth){
     return boundries.top >= -elHeight +500 && boundries.left >= -elWidth && boundries.right <= window.innerWidth + elWidth && boundries.bottom <= window.innerHeight + elHeight -500;
 }
-checkSelectedSection();
+highlightSelectedSection();
 
-//function to control the visibality of the scrollbar
+//functions to hide the scrollbar after 2 seconds if not scrolling
 const bodyEl = document.querySelector("body");
 const htmlEl = document.querySelector("html");
 let timer;
@@ -80,7 +80,7 @@ document.addEventListener("scroll", function(){
 });
 startTimer();
 
-// collapsable elements code
+// collapsable sections code
 const sectionHeaders = document.querySelectorAll(".section__title");
 for(let i =0; i< sectionHeaders.length; i++){
         let sectionContent = sectionHeaders[i].nextElementSibling;
@@ -95,7 +95,7 @@ for(let i =0; i< sectionHeaders.length; i++){
 let topBtn = document.getElementById("btn");
 window.onscroll = function(){scroll()};
 function scroll(){
-    if(document.body.scrollTop >= 400 || document.documentElement.scrollTop >=400){
+    if(document.body.scrollTop >= 300 || document.documentElement.scrollTop >=300){
         topBtn.style.display = "block";
     }
     else{
@@ -106,4 +106,3 @@ function toTop(){
     document.body.scrollTop =0;
     document.documentElement.scrollTop = 0;
 }
-
