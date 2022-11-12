@@ -83,18 +83,12 @@ startTimer();
 // collapsable elements code
 const sectionHeaders = document.querySelectorAll(".section__title");
 for(let i =0; i< sectionHeaders.length; i++){
-    let sectionContent = sectionHeaders[i].nextElementSibling;
-    sectionContent.style.maxHeight = sectionContent.scrollHeight + "px";
-    sectionHeaders[i].addEventListener("click", function(){
-        sectionHeaders[i].classList.toggle("toggle");
-        if (sectionContent.style.maxHeight){
-            sectionContent.style.maxHeight = null;
-        } 
-        else {
-            sectionContent.style.maxHeight = sectionContent.scrollHeight + "px";
-        }
-    });
-    console.log(sectionContent.scrollHeight);
+        let sectionContent = sectionHeaders[i].nextElementSibling;
+        console.log(sectionContent.style.maxHeight);
+        sectionHeaders[i].addEventListener("click", function(){
+            sectionContent.classList.toggle("section__content-collapse");
+        });
+   
 }
 
 //back to top button code

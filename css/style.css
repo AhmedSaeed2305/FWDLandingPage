@@ -59,11 +59,11 @@ body{
     align-items: center;
     background: #fff;
     position: fixed;
-    overflow: scroll;
+    overflow: auto;
     flex-wrap: wrap;
     top: 0;
     z-index: 1;
-    height: 105px;
+    max-height: 105px;
     width: 100%;
 }
 
@@ -94,17 +94,20 @@ body{
     margin-bottom: 0.5rem;
     border-bottom: 1px solid #cc1;
     cursor: pointer;
+    width: 80vw;
 }
 /* style collapsed titles*/
-.toggle.section__title:hover{
+.section__title:hover{
     background: rgba(25, 2, 107, 0.603);
     border-radius: 10px;
 }
 .section__content{
     line-height: 160%;
-    max-height:0;
-    transition: max-height 0.2s ease;
+}
+.section__content-collapse{
     overflow: hidden;
+    display: none;
+
 }
 
 /* style collapsed element*/
@@ -223,8 +226,8 @@ body{
     /* style main navigation for the large screens */
     .main__header{
         height: 52px;
-        overflow: hidden;
-        flex-wrap:nowrap
+        overflow: auto;
+        flex-wrap:wrap
     }
     .main__nav_list{
         justify-content: flex-end;
