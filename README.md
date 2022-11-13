@@ -39,6 +39,18 @@ Also, I started adding the required logic to the CSS and JS files to hide the na
 Finally, I started adding collapsing feature to the sections when the user click on the section header and highlight the header
 when hovered to indicate that there is a feature here.
 
+- After submitting it first time and got the review I started working on 
+the missing features to meet the rubric specifications
+
+I removed the css scroll behavior: smooth and added it with JS using
+scrollIntoView function to the sections and using ScrollTo function
+to back to top button
+
+Then, I added the highlight function to the nav buttons to indicate the selected section.
+
+Finally, I done some code refactoring as collecting all golobal variables 
+to the top of the code and changed the addEventListener functions to the new syntax version.
+
 ## Git
 
 Iam still a total beginner but I used git as much as I can to track the changes since the start of the project to the end
