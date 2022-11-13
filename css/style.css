@@ -6,10 +6,6 @@
 }
 
 /* global styling */
-html {
-    scroll-behavior: smooth;
-}
-
 body{
     background: rgb(136, 203, 171);
     background: linear-gradient(0deg, rgba(136, 203, 171, 1) 0%, rgba(0, 13, 60, 1) 100%);
@@ -108,9 +104,11 @@ body{
     display: none;
 
 }
-
+.active{
+    background: linear-gradient(0deg, rgba(51, 204, 51, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+}
 /* style collapsed element*/
-.active:nth-of-type(odd) .container::before{
+.bubbles:nth-of-type(odd) .container::before{
     content: " ";
     display:inline-block;
     background: rgba(255, 255, 255, 0.187);
@@ -125,7 +123,7 @@ body{
     animation: rotate 4s linear 0s infinite forwards;
 }
 
-.active:nth-of-type(odd):nth-of-type(odd) .container::after{
+.bubbles:nth-of-type(odd):nth-of-type(odd) .container::after{
     content: " ";
     display:inline-block;
     background: rgba(255, 255, 255, 0.187);
@@ -142,7 +140,7 @@ body{
 
 }
 
-.active:nth-of-type(even) .container::before{
+.bubbles:nth-of-type(even) .container::before{
     content: " ";
     display:inline-block;
     background: rgba(255, 255, 255, 0.187);
@@ -159,7 +157,7 @@ body{
     
 }
 
-.active:nth-of-type(even) .container::after{
+.bubbles:nth-of-type(even) .container::after{
     content: " ";
     display:inline-block;
     background: rgba(255, 255, 255, 0.187);
