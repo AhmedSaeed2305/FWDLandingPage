@@ -23,34 +23,31 @@ for(let i = 0; i< sectionsArry.length; i++){
     frag.appendChild(listItems[i]);
     mainNav.appendChild(frag);
 }
-
 //add an eventlistener for each navigation button to navigate to its section.
 for(let i =0; i <listItems.length; i++){
     listItems[i].addEventListener("click", function(){
-        location.href= `#section${i+1}`;
-        
+        sectionsArry[i].scrollIntoView({behavior: "smooth"});
     });
 }
 
 //function to check if the section is in the view port and highlight it
-function highlightSelectedSection(){
+function highlight(){
     let bounding;
-    document.addEventListener("scroll", function(){     
-        let elementWidth;
-        let elementHeight;
-        
-        for(let section of sectionsArry){
-            
-            bounding = section.getBoundingClientRect();
-            elementWidth = section.offsetWidth;
-            elementHeight = section.offsetHeight;
+    let elementWidth;
+    let elementHeight;
+    let i;
+    document.addEventListener("scroll", function(){
+        for(i = 0; i <sectionsArry.length; i++){
+            bounding = sectionsArry[i].getBoundingClientRect();
+            elementWidth = sectionsArry[i].offsetWidth;
+            elementHeight = sectionsArry[i].offsetHeight;
             if (checkSectionPositon(bounding, elementHeight, elementWidth)) {
-                section.style.background = "linear-gradient(0deg, rgba(51, 204, 51, 0.5) 0%, rgba(0, 0, 0, 0) 100%)";
-                section.classList.add("active");
+                sectionsArry[i].classList.add("active", "bubbles");
+                listItems[i].classList.add("active")
             }
             else {
-                section.style.background = "none"
-                section.classList.remove("active");
+                sectionsArry[i].classList.remove("active", "bubbles");
+                listItems[i].classList.remove("active")
             }
         }
     });
@@ -59,7 +56,7 @@ function highlightSelectedSection(){
 function checkSectionPositon(boundries, elHeight, elWidth){
     return boundries.top >= -elHeight +500 && boundries.left >= -elWidth && boundries.right <= window.innerWidth + elWidth && boundries.bottom <= window.innerHeight + elHeight -500;
 }
-highlightSelectedSection();
+highlight();
 
 //functions to hide the scrollbar after 2 seconds if not scrolling
 const bodyEl = document.querySelector("body");
@@ -84,7 +81,6 @@ startTimer();
 const sectionHeaders = document.querySelectorAll(".section__title");
 for(let i =0; i< sectionHeaders.length; i++){
         let sectionContent = sectionHeaders[i].nextElementSibling;
-        console.log(sectionContent.style.maxHeight);
         sectionHeaders[i].addEventListener("click", function(){
             sectionContent.classList.toggle("section__content-collapse");
         });
@@ -103,6 +99,12 @@ function scroll(){
     }
 }
 function toTop(){
-    document.body.scrollTop =0;
-    document.documentElement.scrollTop = 0;
+    // document.body.scrollTop =0;
+    // document.documentElement.scrollTop = 0;
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+    
 }
