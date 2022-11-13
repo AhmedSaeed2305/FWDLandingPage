@@ -13,6 +13,19 @@ let listItems = [];
 //declare a tree fragment to avoid reflow and repaint.
 let frag = document.createDocumentFragment();
 
+//query the body element and the html element to use them to hide the scrollbar
+const bodyEl = document.querySelector("body");
+const htmlEl = document.querySelector("html");
+
+//set a timer for 2 seconds before hiding the scrollbar
+let timer;
+
+//query all section titles to use them as buttons to collapse sections.
+const sectionHeaders = document.querySelectorAll(".section__title");
+
+//query the back to top button
+let topBtn = document.getElementById("btn");
+
 //iterate over the sections array to get add navigation items according to 
 //the number of sections.
 for(let i = 0; i< sectionsArry.length; i++){
@@ -25,7 +38,7 @@ for(let i = 0; i< sectionsArry.length; i++){
 }
 //add an eventlistener for each navigation button to navigate to its section.
 for(let i =0; i <listItems.length; i++){
-    listItems[i].addEventListener("click", function(){
+    listItems[i].addEventListener("click",() =>{
         sectionsArry[i].scrollIntoView({behavior: "smooth"});
     });
 }
@@ -36,7 +49,7 @@ function highlight(){
     let elementWidth;
     let elementHeight;
     let i;
-    document.addEventListener("scroll", function(){
+    document.addEventListener("scroll", () =>{
         for(i = 0; i <sectionsArry.length; i++){
             bounding = sectionsArry[i].getBoundingClientRect();
             elementWidth = sectionsArry[i].offsetWidth;
@@ -59,9 +72,6 @@ function checkSectionPositon(boundries, elHeight, elWidth){
 highlight();
 
 //functions to hide the scrollbar after 2 seconds if not scrolling
-const bodyEl = document.querySelector("body");
-const htmlEl = document.querySelector("html");
-let timer;
 function startTimer(){
     timer = window.setTimeout(function(){
         bodyEl.classList.add("scroll_bar");
@@ -69,7 +79,7 @@ function startTimer(){
     },2000);
 }
 
-document.addEventListener("scroll", function(){
+document.addEventListener("scroll", ()=>{
     bodyEl.classList.remove("scroll_bar");
     htmlEl.classList.remove("scroll_bar");
     clearTimeout(timer);
@@ -78,17 +88,15 @@ document.addEventListener("scroll", function(){
 startTimer();
 
 // collapsable sections code
-const sectionHeaders = document.querySelectorAll(".section__title");
 for(let i =0; i< sectionHeaders.length; i++){
         let sectionContent = sectionHeaders[i].nextElementSibling;
-        sectionHeaders[i].addEventListener("click", function(){
+        sectionHeaders[i].addEventListener("click", ()=>{
             sectionContent.classList.toggle("section__content-collapse");
         });
    
 }
 
-//back to top button code
-let topBtn = document.getElementById("btn");
+//back to top button function
 window.onscroll = function(){scroll()};
 function scroll(){
     if(document.body.scrollTop >= 300 || document.documentElement.scrollTop >=300){
@@ -99,12 +107,8 @@ function scroll(){
     }
 }
 function toTop(){
-    // document.body.scrollTop =0;
-    // document.documentElement.scrollTop = 0;
     window.scrollTo({
         top: 0,
         behavior: "smooth"
-    });
-
-    
+    }); 
 }
