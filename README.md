@@ -1,5 +1,5 @@
 # Landing Page Project
-    This is a Landing Project Page readme
+    This is a Landing Page Project readme
 ## Table of Contents
 
 *[1-Introduction]
