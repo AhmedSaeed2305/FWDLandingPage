@@ -104,8 +104,9 @@ body{
     display: none;
 
 }
+.main__nav_list .active,
 .active{
-    background: linear-gradient(0deg, rgba(51, 204, 51, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(0deg, rgba(51, 204, 51, 0.5) 0%, rgba(0, 0, 0, 0) 100%) ;
 }
 /* style collapsed element*/
 .bubbles:nth-of-type(odd) .container::before{
